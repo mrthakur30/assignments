@@ -5,7 +5,19 @@
 */
 
 function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  let s1 = str1.replace(/[^\w]/g, '').toLowerCase();
+  let s2 = str2.replace(/[^\w]/g, '').toLowerCase();
+  let set = new Set();
 
+  for (let i = 0; i < s1.length; i++) {
+    set.add(s1[i]);
+  }
+    for (let i = 0; i < s2.length; i++) {
+     set.delete(s2[i])
+    }
+  
+    return set.size === 0;
 }
 
 module.exports = isAnagram;
