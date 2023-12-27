@@ -1,19 +1,65 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('your-mongodb-url');
+try {
+    mongoose.connect('mongodb://localhost:27017/udemy');
+} catch (error) {
+    console.log(error);
+}
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
-    // Schema definition here
+     username : {
+        type : String,
+        required : true,
+        unique : true
+    },
+    password : {
+        type : String,
+        required : true
+    },
+    token : {
+        type : String,
+    }
 });
 
 const UserSchema = new mongoose.Schema({
-    // Schema definition here
+    username : {
+        type : String,
+        required : true,
+        unique : true
+    },
+    password : {
+        type : String,
+        required : true
+    },
+    courses : {
+        type : Array
+    },
+    token : {
+        type : String,
+    }
 });
 
 const CourseSchema = new mongoose.Schema({
-    // Schema definition here
+     title : {
+        type : String,
+        required : true,
+     },
+     description : {
+        type : String,
+     },
+     price : {
+        type : Number,
+     },
+     imgLink : {
+        type : String,
+     },
+     published : {
+        type : Boolean,
+        default : true,
+     }
+
 });
 
 const Admin = mongoose.model('Admin', AdminSchema);
