@@ -4,6 +4,7 @@ const userMiddleware = require("../middleware/user");
 const { User, Course } = require('../db/index');
 
 // User Routes
+<<<<<<< HEAD
 app.post('/signup', async (req, res) => {
     const { username, password } = req.body;
 
@@ -38,3 +39,22 @@ app.get('/purchasedCourses', userMiddleware, (req, res) => {
 });
 
 module.exports = router;
+=======
+router.post('/signup', (req, res) => {
+    // Implement user signup logic
+});
+
+router.get('/courses', (req, res) => {
+    // Implement listing all courses logic
+});
+
+router.post('/courses/:courseId', userMiddleware, (req, res) => {
+    // Implement course purchase logic
+});
+
+router.get('/purchasedCourses', userMiddleware, (req, res) => {
+    // Implement fetching purchased courses logic
+});
+
+module.exports = router
+>>>>>>> 44221a6567c34bcb8321268b6c0180e2a2a48d63
